@@ -52,38 +52,7 @@ Holding Space samples only once per press.
 Click **Back** to return to difficulty selection and choose a different range.
 Close the window or press Escape to exit.
 
-## Build a Windows release
 
-Run on Windows with Go and PowerShell installed:
-
-```powershell
-.\scripts\build-release.ps1
-```
-
-This creates `dist\notomat.exe`, `dist\notomat-windows-amd64.zip`, and
-`dist\SHA256SUMS.txt`. The release executable has no console window.
-Application failures are still reported through a Windows error dialog.
-Generated binaries and packages are excluded from Git.
-
-## Publish to GitHub
-
-Create an empty GitHub repository, then connect and push this project.
-Before publishing, choose a license for your own code and confirm that you
-have permission to redistribute the note images.
-
-```powershell
-git add .
-git commit -m "Initial Notomat application"
-git remote add origin https://github.com/YOUR-USERNAME/notomat.git
-git push -u origin main
-git tag v0.1.0
-git push origin v0.1.0
-```
-
-The GitHub Actions workflow tests and builds pushes to `main` and pull requests.
-Pushing a `v*` tag additionally publishes a GitHub Release containing the
-Windows ZIP and checksums. Running the workflow manually only builds an
-artifact; it does not publish a release.
 
 ## Structure
 
@@ -92,5 +61,3 @@ artifact; it does not publish a release.
 - `text.go`: normal UI text rendering with a bundled font.
 - `scripts\build-release.ps1`: Windows packaging and dependency licenses.
 - `.github\workflows\build.yml`: CI and tag-triggered releases.
-
-This is a starter display with image sampling; there is no playback yet.
